@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+
+		<title>Little Bub's Big Trip</title>
+		<link href="https://fonts.googleapis.com/css?family=Arapey" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="turn.min.js"></script>
+		<style type="text/css">
+			body{
+				background-image: url("images/background-1.jpg");
+				background-size: 100% 100%;
+				background-repeat: no-repeat;
+				background-attachment: scroll;
+				background-position: center center;
+				background-size: cover;
+				font-family: 'Indie Flower', cursive;
+			}
+			#magazine{
+				margin-top: 2.5vh;
+				margin-left: 5vw;
+				text-align: center;
+			}
+			#magazine .turn-page{
+				background-color:#ccc;
+				background-size:100% 100%;
+			}
+
+			#magazine .page-wrapper{
+				-webkit-perspective:2000px;
+				-moz-perspective: 2000px;
+				-ms-perspective: 2000px;
+				perspective: 2000px;
+			}
+
+			#magazine .margins {
+				width: 90%;
+				margin-left: 5%;
+				margin-right: 5%;
+			}
+
+			#magazine h1{
+				font-family: 'Patrick Hand SC', cursive;
+    			color: #fff3e5;
+    			text-shadow: 2px 2px #88008a;
+    			font-size: 4vw;
+			}
+			#magazine h3{
+				font-family: 'Indie Flower', cursive;
+				font-size: 4vw;
+			}
+			#magazine p{
+				font-family: 'Patrick Hand SC', cursive;
+				font-size: 3vw;
+			}
+
+			#magazine .inside{
+				border-radius: 0px 0px 0px 0px !important;
+				background-image: -webkit-linear-gradient(left, #fbf5e1 95%, #d4cfbe 100%) !important;
+			}
+
+			#magazine .inside-back{
+				border-radius: 0px 0px 0px 0px !important;
+				background-image: -webkit-linear-gradient(right, #fbf5e1 95%, #d4cfbe 100%) !important;
+			}
+
+			#magazine .page{
+				width:44vw;
+				height:93vh;
+				background-color: #ccc;
+			}
+
+			#magazine .even{
+			    background:-webkit-gradient(linear, left top, right top, color-stop(0.95, #fff), color-stop(1, #e4e4e4));
+			    background-image:-webkit-linear-gradient(left, #fff 95%, #e4e4e4 100%);
+			    background-image:-moz-linear-gradient(left, #fff 95%, #e4e4e4 100%);
+			    background-image:-ms-linear-gradient(left, #fff 95%, #e4e4e4 100%);
+			    background-image:-o-linear-gradient(left, #fff 95%, #e4e4e4 100%);
+			    background-image:linear-gradient(left, #fff 95%, #e4e4e4 100%);
+
+			}
+
+			#magazine .odd{
+			    background:-webkit-gradient(linear, right top, left top, color-stop(0.95, #fff), color-stop(1, #e4e4e4));
+			    background-image:-webkit-linear-gradient(right, #fff 95%, #e4e4e4 100%);
+			    background-image:-moz-linear-gradient(right, #fff 95%, #e4e4e4 100%);
+			    background-image:-ms-linear-gradient(right, #fff 95%, #e4e4e4 100%);
+			    background-image:-o-linear-gradient(right, #fff 95%, #e4e4e4 100%);
+			    background-image:linear-gradient(right, #fff 95%, #e4e4e4 100%);
+
+
+			}
+
+			#magazine .cover{
+
+				background: linear-gradient(to left, rgba(255, 0, 0, 0) 94%, rgba(4, 4, 4, 0.45) 100% ),
+				url(images/pinkdust.png);
+				border-radius: 0px 0px 0px 0px !important;
+			}
+
+			#magazine .back-cover{
+				background: linear-gradient(to right, rgba(255, 0, 0, 0) 94%, rgba(4, 4, 4, 0.45) 100% ),
+				url(images/pinkdust.png);
+				border-radius: 0px 0px 0px 0px !important;
+			}
+
+			div.polaroid {
+			  width: 38vw;
+				height: 90vh;
+			  background-color: white;
+			  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			  margin-top: 1.5vh;
+			}
+
+			div.container {
+			  text-align: center;
+			  padding: 10px 20px;
+				width: 100%
+			}
+
+			.horizontal {
+				width: 90%;
+				margin-top: 10px;
+			}
+
+			.vertical {
+				height: 78vh;
+				margin-top: 10px;
+			}
+
+
+			#magazine .shadow{
+				-webkit-box-shadow: 0 4px 10px #666;
+  				-moz-box-shadow: 0 4px 10px #666;
+  				-ms-box-shadow: 0 4px 10px #666;
+  				-o-box-shadow: 0 4px 10px #666;
+  				box-shadow: 0 4px 10px #666;
+			}
+
+			.imgBorder {
+ 				 border: 10px solid white;
+ 			}
+
+
+
+
+</style>
+</head>
+<body>
+
+<div id="magazine">
+	<div class="hard cover"><h1>Little Bub's</h1><img class="imgBorder" style="width: 85%" src="images/2.jpg"><h1>Big Adventure</h1></div>
+	<div class="hard inside shadow"></div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/4.jpg" class="vertical">
+			  <div class="container">
+			    <p>Making friends before leaving!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/3.jpg" class="horizontal">
+			  <div class="container">
+			    <p>At JFK, Ready to go!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/5.jpg" class="vertical">
+			  <div class="container">
+			    <p>First step, make a wish!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/6.jpg" class="vertical">
+			  <div class="container">
+			    <p>At Pigalle, Parisian Supreme!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/7.jpg" class="vertical">
+			  <div class="container">
+			    <p>Pigalle Basketball Court!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/8.jpg" class="vertical">
+			  <div class="container">
+			    <p>Montmartre Love Wall!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/9.jpg" class="vertical">
+			  <div class="container">
+			    <p>What a view from Sacre Coeur</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/10.jpg" class="vertical">
+			  <div class="container">
+			    <p>What a view <i>of</i> Sacre Coeur</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/11.jpg" class="vertical">
+			  <div class="container">
+			    <p>Lil Bub, Big City</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/12.jpg" class="vertical">
+			  <div class="container">
+			    <p>Sacre Bleu!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/13.jpg" class="vertical">
+			  <div class="container">
+			    <p>Nutella Crepes!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/14.jpg" class="vertical">
+			  <div class="container">
+			    <p>New Friends at the Eiffel Tower!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/15.jpg" class="vertical">
+			  <div class="container">
+			    <p>Finally found something my size!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/16.jpg" class="vertical">
+			  <div class="container">
+			    <p>Whoops!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/17.jpg" class="vertical">
+			  <div class="container">
+			    <p>That's better!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/18.jpg" class="vertical">
+			  <div class="container">
+			    <p>Solo Pic</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/19.jpg" class="vertical">
+			  <div class="container">
+			    <p>It's lit!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/20.jpg" class="vertical">
+			  <div class="container">
+			    <p>I take it back, <i>now</i> it's lit</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/21.jpg" class="vertical">
+			  <div class="container">
+			    <p>Paris really is the city of lights</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/22.jpg" class="vertical">
+			  <div class="container">
+			    <p>Musee D'Orsay here I come!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/23.jpg" class="vertical">
+			  <div class="container">
+			    <p>Look! A buddy!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/24.jpg" class="vertical">
+			  <div class="container">
+			    <p>Van Get Out Of the Way!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/25.jpg" class="vertical">
+			  <div class="container">
+			    <p>The Artist Himself!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/26.jpg" class="vertical">
+			  <div class="container">
+			    <p>Finally a clear view!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/27.jpg" class="vertical">
+			  <div class="container">
+			    <p>Wait, this isn't Starry Night!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/28.jpg" class="vertical">
+			  <div class="container">
+			    <p>Bubflowers!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/29.jpg" class="vertical">
+			  <div class="container">
+			    <p>Daredevil</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/30.jpg" class="horizontal">
+			  <div class="container">
+			    <p>Minions everywhere!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/31.jpg" class="horizontal">
+			  <div class="container">
+			    <p>Walking around La Marais!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/32.jpg" class="horizontal">
+			  <div class="container">
+			    <p>La Marais gardens!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/33.jpg" class="vertical">
+			  <div class="container">
+			    <p>Another buddy!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/34.jpg" class="horizontal">
+			  <div class="container">
+			    <p>Supreme Store!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/35.jpg" class="vertical">
+			  <div class="container">
+			    <p>Big Buddy</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/36.jpg" class="horizontal">
+			  <div class="container">
+			    <p>Fitting in at Uniqlo</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/37.jpg" class="horizontal">
+			  <div class="container">
+			    <p>Rats and Cats</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/38.jpg" class="vertical">
+			  <div class="container">
+			    <p>Cat-Man</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/39.jpg" class="vertical">
+			  <div class="container">
+			    <p>Random Church!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/40.jpg" class="vertical">
+			  <div class="container">
+			    <p>Another Angle!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/41.jpg" class="vertical">
+			  <div class="container">
+			    <p>Wishing Well!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/42.jpg" class="horizontal">
+			  <div class="container">
+			    <p>Picnic in the Park</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/43.jpg" class="vertical">
+			  <div class="container">
+			    <p>Notre Dame Du Paris</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/44.jpg" class="vertical">
+			  <div class="container">
+			    <p>Palais de Juste</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/45.jpg" class="vertical">
+			  <div class="container">
+			    <p>Pont Neuf</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/46.jpg" class="vertical">
+			  <div class="container">
+			    <p>Palais Louvre</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/47.jpg" class="vertical">
+			  <div class="container">
+			    <p>The Louvre!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/48.jpg" class="horizontal">
+			  <div class="container">
+			    <p>A Dance Company Posing!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/49.jpg" class="horizontal">
+			  <div class="container">
+			    <p>Palais Royal</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size">
+		<div class="margins">
+			<div class="polaroid">
+			  <img src="images/50.jpg" class="horizontal">
+			  <div class="container">
+			    <p>Another one!</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="own-size"><div class="margins"><h3>Hamburg</h3><p>This is where I will talk about Hamburg</p></div></div>
+	<div class="own-size"><div class="margins"><h3>Coopenhagen</h3><p>This is where I will talk about Coopenhagen</p></div></div>
+	<div class="hard inside-back fixed shadow"></div>
+	<div class="hard back-cover"></div>
+
+</div>
+
+
+<script type="text/javascript">
+	$(window).ready(function() {
+
+		var myDynamicBookWidthValue = parseInt(.90*$(window).width());
+		if(myDynamicBookWidthValue % 2 == 1) myDynamicBookWidthValue--; // no odd width
+		var myDynamicBookHeightValue = parseInt(.95*$(window).height());
+		if(myDynamicBookHeightValue % 2 == 1) myDynamicBookHeightValue--; // no odd width
+		$("#magazine").css({width: myDynamicBookWidthValue, height: myDynamicBookHeightValue});
+
+		$('#magazine').turn({
+							display: 'double',
+							acceleration: true,
+							gradients: !$.isTouch,
+							elevation:50,
+							when: {
+								turned: function(e, page) {
+									console.log('Current view: ', $(this).turn('view'));
+								}
+							}
+						});
+	});
+
+
+	$(window).bind('keydown', function(e){
+
+		if (e.keyCode==37)
+			$('#magazine').turn('previous');
+		else if (e.keyCode==39)
+			$('#magazine').turn('next');
+
+	});
+
+	$('#magazine').bind('turning', function(event, page, view) {
+
+	if (page>=2)
+  		$('#magazine .p2').addClass('fixed');
+	else
+  		$('#magazine .p2').removeClass('fixed');
+
+	if (page<$(this).turn('pages'))
+  		$('#magazine .p53').addClass('fixed');
+	else
+  		$('#magazine .p53').removeClass('fixed');
+
+	});
+</script>
+
+</body>
+</html>
